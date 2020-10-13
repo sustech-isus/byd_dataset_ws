@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="huaxun_radar" type="huaxun_radar_node" name="huaxun_radar_node" output="screen" />
+
+</launch>

@@ -1,0 +1,6 @@
+[submodule "src/HesaiLidar_General_ROS"]
+	path = src/HesaiLidar_General_ROS
+	url = https://github.com/sustech-isus/HesaiLidar_General_ROS.git
+[submodule "src/flir_camera_driver"]
+	path = src/flir_camera_driver
+	url = https://github.com/sustech-isus/flir_camera_driver.git

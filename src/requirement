@@ -1,0 +1,10 @@
+ros-melodic-gps-common
+ros-melodic-swri-math-util
+ros-melodic-swri-roscpp
+ros-melodic-swri-serial-util
+ros-melodic-swri-string-util
+ros-melodic-swri-nodelet
+ros-melodic-novatel-gps-driver
+ros-melodic-geographic-msgs
+ros-melodic-image-exposure-msgs
+
