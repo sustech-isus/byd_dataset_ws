@@ -56,9 +56,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 255
+      Max Intensity: 222
       Min Color: 0; 0; 0
-      Min Intensity: 2
+      Min Intensity: 1
       Name: Point Cloud
       Position Transformer: XYZ
       Queue Size: 10
@@ -66,7 +66,7 @@ Visualization Manager:
       Size (Pixels): 1.5
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /rsbp_rear/rslidar_points
+      Topic: /rsbp_left/rslidar_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -100,7 +100,7 @@ Visualization Manager:
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: rsbp_rear
+    Fixed Frame: rsbp_left
     Frame Rate: 30
   Name: root
   Tools:
@@ -139,10 +139,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.879798173904419
+      Pitch: -0.029796313494443893
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.08499480038881302
+      Yaw: 6.283183574676514
     Saved: ~
 Window Geometry:
   Displays:
