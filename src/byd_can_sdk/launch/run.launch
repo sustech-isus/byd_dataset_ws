@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="byd_sdk" type="byd_sdk_node" name="byd_sdk_node">
+    </node>
+</launch>

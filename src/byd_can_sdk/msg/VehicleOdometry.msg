@@ -1,0 +1,7 @@
+Header header
+float64 speed
+float64 steering_angle
+float64 steering_angle_velocity
+float64 yaw_rate
+float64 acceleration_x
+float64 acceleration_y
