@@ -1,0 +1,46 @@
+<launch>
+    <group ns="infrared_camera0">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14076"/>
+			<remap from="/image_color" to="/infrared_camera/rear/image_color" />
+	    </node>
+	</group>
+
+    <group ns="infrared_camera1">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14079"/>
+			<remap from="/image_color" to="/infrared_camera/rear_left/image_color" />
+	    </node>
+	</group>
+
+    <group ns="infrared_camera2">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14080"/>
+			<remap from="/image_color" to="/infrared_camera/front_left/image_color" />
+	    </node>
+	</group>
+
+    <group ns="infrared_camera3">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14081"/>
+			<remap from="/image_color" to="/infrared_camera/front/image_color" />
+	    </node>
+	</group>
+
+    <group ns="infrared_camera4">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14077"/>
+			<remap from="/image_color" to="/infrared_camera/front_right/image_color" />
+	    </node>
+	</group>
+
+    <group ns="infrared_camera5">
+	    <node pkg="infrared_camera_driver" name="infrared_camera_driver_node" type="infrared_camera_driver" cwd="node" output="screen" >
+		    <param name="serial" type="int" value="14078"/>
+			<remap from="/image_color" to="/infrared_camera/rear_right/image_color" />
+	    </node>
+	</group>
+
+
+</launch>
+
