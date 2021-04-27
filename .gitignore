@@ -3,3 +3,4 @@ devel
 dataset/*.bag
 src/CMakeLists.txt
 *.bag
+.vscode
