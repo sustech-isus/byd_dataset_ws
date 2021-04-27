@@ -13,15 +13,29 @@ SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  message_generation
+        message_generation
+        roscpp
+        rospy
+        std_msgs
+        rosbag
+#  message_generation
+  gps_common
 )
 
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system filesystem thread regex date_time program_options serialization)
 
+ add_message_files(
+   FILES
+   GPSInfo.msg
+   SpeedInfo.msg
+         RotateInfo.msg
+)
+
+generate_messages(
+   DEPENDENCIES
+   std_msgs
+)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -74,10 +88,10 @@ find_package(Boost REQUIRED COMPONENTS system filesystem thread regex date_time 
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-   DEPENDENCIES
-   std_msgs
-)
+#generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -123,7 +137,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  #include
   src/ASIOLib
   src/GPSLib
   ${catkin_INCLUDE_DIRS}
@@ -162,6 +176,12 @@ add_Subdirectory(src/GPSLib)
 #   ${catkin_LIBRARIES}
 # )
 
+
+add_executable(${PROJECT_NAME}_node src/GPSPublisher/gps_publisher.cpp)
+target_link_libraries(${PROJECT_NAME}_node  ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_node  ASIO GPS_Decoder boost_system boost_filesystem tinyxml boost_thread boost_regex boost_date_time boost_program_options boost_serialization)
+
+
 #############
 ## Install ##
 #############
@@ -177,11 +197,11 @@ add_Subdirectory(src/GPSLib)
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
-#   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+ install(TARGETS ${PROJECT_NAME}_node 
+   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/
@@ -191,11 +211,12 @@ add_Subdirectory(src/GPSLib)
 # )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-# install(FILES
-#   # myfile1
-#   # myfile2
-#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-# )
+ install(FILES
+  launch/run.launch
+  launch/run2.launch
+   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+)
+
 
 #############
 ## Testing ##
@@ -210,6 +231,3 @@ add_Subdirectory(src/GPSLib)
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(${PROJECT_NAME}_node src/GPSPublisher/gps_publisher.cpp)
-target_link_libraries(${PROJECT_NAME}_node  ${catkin_LIBRARIES})
-target_link_libraries(${PROJECT_NAME}_node  ASIO GPS_Decoder boost_system boost_filesystem tinyxml boost_thread boost_regex boost_date_time boost_program_options boost_serialization)

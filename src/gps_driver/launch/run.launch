@@ -1,7 +1,7 @@
 <launch> 
-    <node pkg="gps_driver" type="gps_driver_node" name="gps_driver_node" args="-p /dev/ttyUSB0 -b 230400 --GPFPD 1 -f /home/haylion/gps.txt">
+    <node pkg="gps_driver" type="gps_driver_node" name="gps_driver_node" args="-p /dev/ttyUSB0 -b 9600 --INSPVAXA 1 --RAWIMUA 1 -f ./gps.txt">
     <!-- <param name="port_name" type="string" value="/dev/ttyUSB0"/> -->
-    <!-- <param name="baud_rate" type="int" value="115200"/>          -->  
+    <!-- <param name="baud_rate" type="int" value="230400"/>          -->  
     </node>
 
 

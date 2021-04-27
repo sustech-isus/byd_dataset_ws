@@ -8,6 +8,7 @@ namespace GPSLib {
 		operator unsigned char() const { return value & 0xFF; }
 		friend std::istream& operator>>(std::istream& in, byte_from_hex& out) {
 			in >> std::hex >> out.value;
+			//std::cout << "the in is: " << in <<std::endl;
 			return in;
 		}
 	};
