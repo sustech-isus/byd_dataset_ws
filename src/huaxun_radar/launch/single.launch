@@ -1,5 +1,17 @@
 <launch>
 
-    <node pkg="huaxun_radar" type="huaxun_radar_node" name="huaxun_radar_node" output="screen" />
-
+    <node pkg="huaxun_radar" type="huaxun_radar_node" name="huaxun_radar_node" output="screen" >
+        <remap from="/radar_points/0" to="/radar_points/front" />
+        <remap from="/radar_points/17" to="/radar_points/front_left" />
+        <remap from="/radar_points/18" to="/radar_points/rear_left" />
+        <remap from="/radar_points/19" to="/radar_points/front_right" />
+        <remap from="/radar_points/20" to="/radar_points/rear_right" />
+        <remap from="/radar_points/34" to="/radar_points/rear" />
+        <remap from="/radar_tracks/0" to="/radar_tracks/front" />
+        <remap from="/radar_tracks/17" to="/radar_tracks/front_left" />
+        <remap from="/radar_tracks/18" to="/radar_tracks/rear_left" />
+        <remap from="/radar_tracks/19" to="/radar_tracks/front_right" />
+        <remap from="/radar_tracks/20" to="/radar_tracks/rear_right" />
+        <remap from="/radar_tracks/34" to="/radar_tracks/rear" />
+    </node>
 </launch>

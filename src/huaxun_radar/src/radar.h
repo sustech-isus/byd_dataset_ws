@@ -17,56 +17,50 @@
 
 namespace radar{
 
-struct CanMsg{
-  long id = 0;
-  unsigned char msg[8];
-  unsigned int dlc = 0;
-  unsigned int flag = 0;
-  unsigned long time = 0;
-};
+
+class Device;
+
+struct CanMsg;
 
 class Radar {
  public:
 
   Radar();
-
+  ~Radar();
  private:
 
   int CanInit();
 
-  int CanOff() const;
+  canHandle InitChannel(int channel_);
+  int CloseChannel(canHandle can_handle_);
 
-  void ReceiveThread();
+  void ReceiveThread(int channel_);
 
   void PrintFrameInfo(int can_index, unsigned int can_frame_id,int data_len, const unsigned char *data);
 
-  void PublishMsg();
+  //void PublishMsg();
+
+  // template<class POINTS>
+  // void PublishPointCloud2Msg(POINTS points, ros::Publisher pub);
 
  private:
 
-  std::shared_ptr<std::thread> receive_thread_ptr_;
+  //void procDelphiMsg(CanMsg *msg);
 
-  std::string radar_frame_ = "radar";
-  std::string radar_targets_topic_ = "/radar_targets";
-  std::string radar_pointcloud_raw_topic_ = "/radar_pointcloud_raw";
-  std::string radar_pointcloud_topic_ = "/radar_pointcloud";
+  std::shared_ptr<std::thread> receive_thread_ptr_0;
+  std::shared_ptr<std::thread> receive_thread_ptr_1;
+  std::shared_ptr<std::thread> receive_thread_ptr_2;
+  std::shared_ptr<std::thread> receive_thread_ptr_3;
+  //std::string radar_frame_ = "radar";
+  //std::string radar_targets_topic_ = "/radar_targets";
+  //std::string radar_pointcloud_raw_topic_ = "/radar_pointcloud_raw";
+  //std::string radar_pointcloud_topic_ = "/radar_pointcloud";
 
   bool print_frame = false;
 
   ros::NodeHandle nh_;
-  ros::Publisher radar_tracks_pub_;
-  ros::Publisher radar_points_pub_;
 
-  canHandle can_handle_;
-  canStatus can_status_;
-  int channel_ = 0;
-
-  ros::Time timestamp_;
-  pcl::PointCloud<PclRadarPointType> pcl_radar_points_;
-  pcl::PointCloud<PclRadarTrackType> pcl_radar_tracks_;
-
-
-
+  std::map<int, Device*> devices;
 };
 
 }
