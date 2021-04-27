@@ -4,3 +4,6 @@
 [submodule "src/flir_camera_driver"]
 	path = src/flir_camera_driver
 	url = https://github.com/sustech-isus/flir_camera_driver.git
+[submodule "src/rslidar_sdk"]
+	path = src/rslidar_sdk
+	url = https://github.com/sustech-isus/rslidar_sdk
