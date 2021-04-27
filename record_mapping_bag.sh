@@ -1,0 +1,1 @@
+rosbag record -b 4096 --chunksize=1024 /pandar_points /cameras/180_front/image_color/compressed /cameras/130_front_left/image_color/compressed /cameras/230_front_right/image_color/compressed /infrared_camera/front_left/image_color /infrared_camera/front/image_color /infrared_camera/front_right/image_color

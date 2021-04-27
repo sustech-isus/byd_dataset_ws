@@ -47,7 +47,18 @@ source devel/setup.bash
 
 ```bash
 # 开启PTP Master
-sudo ptp4l -i enp1s0f0 -m
+# master
+# sudo ptp4l -i enp1s0f0 -m
+
+#slave
+sudo ptpd -s -i enp1s0f0 -V
+
+#get ram IMU INFO (usb1 #port number)
+sudo cutecom
+        log usb1 rawimua onnew
+
+# set buffer
+sudo sysctl -w net.core.rmem_default=26214400
 
 # 启动激光雷达节点
 roslaunch hesai_lidar hesai_lidar.launch
@@ -68,5 +79,24 @@ rosbag record -b 4096 --chunksize=1024 --duration=1m /pandar /radar_points /rada
 watch df -h
 ```
 
+#启动心电图监测
+cd ./driver_ecg/
+./start-bridge.sh
+./start-ecg.sh
+监听 /driver_ecg/current TOPIC即可
+
+注意，心电监测需要sudo权限，提示输入密码输入即可
+如果报错无法连接串口，打开start-ecg.sh时重新插拔硬件设备，找到ttyUSB的名称，修改./driver_ecg/publish/application.json中“Device/SerialPort"项
+如果Topic收到的数据恒为0，重新开关USB设备上的开关，并检查心电监测线缆以及电极片的连接，电极片未连接时数据恒为0
 
 
+
+
+
+// lidar 高度
+10.5+30.2+155.5= 196.2
+
+// radar 高度
+55.5
+
+atan(0.83) = 0.6927678353971222
