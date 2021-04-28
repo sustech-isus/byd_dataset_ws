@@ -19,18 +19,18 @@ struct CanMsg{
 class Device
 {
 public:
-    Device(ros::NodeHandle nh_, int device_id): nh_(nh_), device_id(device_id)
+    Device(ros::NodeHandle nh_, int device_id, const std::string &name): nh_(nh_), device_id(device_id)
     {
         std::stringstream ss;
-        ss << "/radar_points" << "/" << device_id;
+        ss << "/radar_points" << "/" << name;
         radar_points_pub_ = nh_.advertise<sensor_msgs::PointCloud2>(ss.str(), 1);
 
         ss.str("");
-        ss << "/radar_tracks" << "/" << device_id;
+        ss << "/radar_tracks" << "/" << name;
         radar_tracks_pub_ = nh_.advertise<sensor_msgs::PointCloud2>(ss.str(), 1);
 
         ss.str("");
-        ss << "radar_" << device_id;
+        ss << "radar_" << name;
         radar_frame_ = ss.str();
 
         state = FRAME_ENDED;
@@ -147,12 +147,12 @@ Radar::Radar() {
   // radar_points_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/radar_points", 1);
   // radar_tracks_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/radar_tracks", 1);
 
-  devices.insert(std::pair<int, Device*>(0x0, new Device(nh_, 0x0)));
-  devices.insert(std::pair<int, Device*>(0x11, new Device(nh_, 0x11)));
-  devices.insert(std::pair<int, Device*>(0x12, new Device(nh_, 0x12)));
-  devices.insert(std::pair<int, Device*>(0x13, new Device(nh_, 0x13)));
-  devices.insert(std::pair<int, Device*>(0x14, new Device(nh_, 0x14)));
-  devices.insert(std::pair<int, Device*>(0x22, new Device(nh_, 0x22)));
+  devices.insert(std::pair<int, Device*>(0x0, new Device(nh_, 0x0, "front")));
+  devices.insert(std::pair<int, Device*>(0x11, new Device(nh_, 0x11, "front_left")));
+  devices.insert(std::pair<int, Device*>(0x12, new Device(nh_, 0x12, "rear_left")));
+  devices.insert(std::pair<int, Device*>(0x13, new Device(nh_, 0x13, "front_right")));
+  devices.insert(std::pair<int, Device*>(0x14, new Device(nh_, 0x14, "rear_right")));
+  devices.insert(std::pair<int, Device*>(0x22, new Device(nh_, 0x22, "rear")));
   
   if(CanInit() != 0){
     std::cerr << "CAN Init failed!" << std::endl;
