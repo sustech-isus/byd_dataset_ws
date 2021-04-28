@@ -1,5 +1,5 @@
 <launch>
-  <!-- param name="use_sim_time" value="True"/-->
+  <!-- <param name="use_sim_time" value="True"/> -->
 
   <node pkg="tf" type="static_transform_publisher" name="link_front_radar_broadcaster" 
        args="0 -2.62 -1.337 3.14159265 0 0  Pandar128 radar_0 50" />
@@ -16,7 +16,16 @@
   <node pkg="tf" type="static_transform_publisher" name="link1_rear_right_radar_broadcaster" 
        args="-0.73 1.83 -1.285 0.8727678353971222 0 0  Pandar128 radar_20 50" />
 
-  <node pkg="tf" type="static_transform_publisher" name="link_rear_radar_broadcaster" 
-       args="0 1.95 -1.327 0 0 0  Pandar128 radar_34 50" />
+  <node pkg="tf" type="static_transform_publisher" name="link_lidar_front_broadcaster" 
+       args="0.05 -2.7 -1.55 1.57 -1.57 0  Pandar128 rsbp_front 50" />
+
+  <node pkg="tf" type="static_transform_publisher" name="link_lidar_left_broadcaster" 
+       args="0.62 0.04 -0.4 3.15 -1.55 0  Pandar128 rsbp_left 50" />
+
+  <node pkg="tf" type="static_transform_publisher" name="link_lidar_right_broadcaster" 
+       args="-0.62 -0.04 -0.4 0 -1.57 0  Pandar128 rsbp_right 50" />
+
+  <node pkg="tf" type="static_transform_publisher" name="link_lidar_rear_broadcaster" 
+       args="0  2 -1.48  -1.57 -1.36 0  Pandar128 rsbp_rear 50" />
 
 </launch>
