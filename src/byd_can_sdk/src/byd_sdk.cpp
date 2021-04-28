@@ -5,9 +5,9 @@
 int BydSDK::Init(const ros::NodeHandle& nh)
 {
   nh_ = nh;
-  vehicle_odometry_pub_ = nh_.advertise<byd_sdk::VehicleOdometry>("/vehicleodmetry",1);
-  control_info_pub_ = nh_.advertise<byd_sdk::ControlInfo>("/controlinfo",1);
-  vehicle_status_pub_ = nh_.advertise<byd_sdk::VehicleStatus>("/vehiclestatus",1);
+  vehicle_odometry_pub_ = nh_.advertise<byd_sdk::VehicleOdometry>("/vehicle/odometry",1);
+  control_info_pub_ = nh_.advertise<byd_sdk::ControlInfo>("/vehicle/controlinfo",1);
+  vehicle_status_pub_ = nh_.advertise<byd_sdk::VehicleStatus>("/vehicle/status",1);
 
 
 
