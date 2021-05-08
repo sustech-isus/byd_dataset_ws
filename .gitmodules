@@ -7,3 +7,6 @@
 [submodule "src/rslidar_sdk"]
 	path = src/rslidar_sdk
 	url = https://github.com/sustech-isus/rslidar_sdk.git
+[submodule "src/rosbag"]
+	path = src/rosbag
+	url = https://github.com/sustech-isus/rosbag
